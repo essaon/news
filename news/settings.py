@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'users',
     'pages',
+    'articles',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
