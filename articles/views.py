@@ -13,8 +13,9 @@ class ArticleDetailView(LoginRequiredMixin,DetailView):
     model = models.Article
     template_name = 'article_detail.html'
     login_url='login'
+    fields = ['comment']
 
-class ArticleUpdateView(LoginRequiredMixin,UpdateView):
+class ArticleUpdateView(LoginRequiredMixin,UpdateView,):
     model = models.Article
     fields = ['title', 'body']
     template_name = 'article_update.html'
@@ -36,3 +37,12 @@ class ArticleCreateView(LoginRequiredMixin,CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+class ArticleComment(LoginRequiredMixin,CreateView):
+    model = models.Comment
+    template_name = 'article_comment.html'
+    fields = ['comment',]
+    login_url = 'login'
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
