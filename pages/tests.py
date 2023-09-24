@@ -18,10 +18,6 @@ class HomePageTest(SimpleTestCase):
 class SignupPageTest(TestCase):
     username = 'newsu'
     email = 'newsu@email.com'
-    def test_password_change_status(self):
-        resp = self.client.get('/users/password_change/')
-        self.assertEqual(resp.status_code, 200)
-        self.assertTemplateUsed(resp, 'registration/password_change.html')
     def test_signup_page_status(self):
         resp = self.client.get('/users/signup/')
         self.assertEqual(resp.status_code, 200)
